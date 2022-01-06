@@ -216,6 +216,7 @@ impl<'a, L, P> Application<'a, L, P> where
         // It is preferable to maximize the windows after the surface and renderer setup,
         // but is not mandatory.
         // TODO: Vulkan issue https://github.com/gfx-rs/wgpu/issues/1958 gives false positives
+        window.set_maximized(true);
         if self.config.window_starts_maximized() {
             /*for vm in primary_monitor.video_modes() {
                 println!("{:?}", vm);
@@ -223,7 +224,7 @@ impl<'a, L, P> Application<'a, L, P> where
             //let video_mode = primary_monitor.video_modes().nth(0).unwrap();
 
             //window.set_fullscreen(Some(Fullscreen::Exclusive(video_mode)));  // TODO: doesn't work the ALT+TAB on Windows 10
-            window.set_fullscreen(Some(Fullscreen::Borderless(Some(primary_monitor))));
+            //window.set_fullscreen(Some(Fullscreen::Borderless(Some(primary_monitor))));
         }
 
         // Now is a good time to make the window visible, lessening the flicker explained above,
