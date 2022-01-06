@@ -194,6 +194,7 @@ impl<'a, L, P> Application<'a, L, P> where
             .with_visible(false)
             //.with_window_icon() // TODO: because yes!
             .build(&event_loop)?;
+        window.set_maximized(false);
 
         let mut renderer_builder = RendererBuilder::<P, DiffuseImageSize, DiffuseTexture>::new(&window);
         if self.clear_color.is_some() {
@@ -216,7 +217,6 @@ impl<'a, L, P> Application<'a, L, P> where
         // It is preferable to maximize the windows after the surface and renderer setup,
         // but is not mandatory.
         // TODO: Vulkan issue https://github.com/gfx-rs/wgpu/issues/1958 gives false positives
-        //window.set_maximized(true);
         //if self.config.window_starts_maximized() {
             /*for vm in primary_monitor.video_modes() {
                 println!("{:?}", vm);
